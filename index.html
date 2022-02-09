@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BotGame</title>
+    <meta name="description" content="My fisrt PWA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/costum.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#00897B" />
+</head>
+
+<body>
+    <!-- Navigasi -->
+    <nav role="navigation">
+        <div class="nav-wrapper container">
+            <a href="#home" class="brand-logo" id="logo-container">
+                <img src="./img/newgamelogo.png" alt="logo" class="icon">
+                <div class="text-icon">
+                    <span style="color: #e53e3e;">Bot</span><span style="color: #3182ce;">Game</span>
+                </div>
+            </a>
+            <a href="#" class="sidenav-trigger" data-target="nav-mobile">☰</a>
+
+            <ul class="topnav right hide-on-med-and-down"></ul>
+            <ul class="sidenav black" id="nav-mobile"></ul>
+        </div>
+    </nav>
+    <!-- Akhir Navigasi -->
+    <main class="body-content"></main>
+    <script src="./materialize/js/materialize.min.js"></script>
+    <script type="module" src="./script/nav.js"></script>
+    <script>
+        // REGISTER SERVICE WORKER
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(function () {
+                        console.log("Pendaftaran ServiceWroker berhasil");
+                    })
+                    .catch(function () {
+                        console.log("Pendaftaran ServiceWrker gagal");
+                    });
+            })
+        } else {
+            console.log("ServiceWorker belum didukung browser ini.")
+        }
+    </script>
+</body>
+
+</html>
